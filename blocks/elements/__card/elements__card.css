@@ -1,5 +1,6 @@
 .elements__card {
     border: solid 1px red;
+    width: 282px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

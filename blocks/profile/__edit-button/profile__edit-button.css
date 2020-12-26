@@ -9,6 +9,7 @@
     height: 18px;
     padding: 0;
     margin-right: 19px;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 1280px) {
