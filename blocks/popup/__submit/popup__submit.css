@@ -1,12 +1,11 @@
 .popup__submit {
-    border: red 1px solid;
     width: 238px;
     height: 46px;
     background-color: #000000;
     cursor: pointer;
     outline: none;
     border-radius: 2px;
-    /* border: 0; */
+    border: 0;
     color: #ffffff;
     font-weight: normal;
     font-size: 18px;
