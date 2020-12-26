@@ -1,7 +1,6 @@
 .elements__caption {
-    border: 1px red solid;
     background-color: #ffffff;
-    width: 282px;
+    max-width: 282px;
     height: calc(100% - 282px);
     border-radius: 0 0 10px 10px;
     display: flex;

@@ -1,20 +1,11 @@
 .elements {
-    border: 1px solid red;
     margin: 0 auto 48px;
     max-width: 282px;
-    display: grid;
-    grid-template-columns: 1, 1fr;
-    grid-template-rows: repeat(6, 361px);
-    flex-wrap: wrap;
-    row-gap: 20px;
 }
 
 @media screen and (min-width: 1280px) {
     .elements {
         max-width: 880px;
-        column-gap: 17px;
         margin-bottom: 66px;
-        grid-template-columns: repeat(3, 282px);
-        grid-template-rows: repeat(2, 362px);
     }
 }
