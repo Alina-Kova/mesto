@@ -24,7 +24,7 @@
                     <div class="profile__info">
                         <div class="profile__container">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button profile__edit-button_active"></button>
+                        <button class="profile__edit-button profile__edit-button_active popup_open"></button>
                         <!-- удалить _active??? -->
                         </div>
                         <p class="profile__description">Исследователь океана</p>
@@ -83,16 +83,17 @@
 
         </main>
         <footer class="footer">&copy; 2020 Mesto Russia</footer>
-        <!-- <section class="overlay">
+        <section class="overlay">
+            <span class="close-button"></span>
             <div class="popup">
                 <h2 class="popup__header">Редактировать профиль</h2>
                 <div class="popup__input">
-                    <input type="text" class="popup__text popup__text_type_first-name">
-                    <input type="text" class="popup__text popup__text_type_occupation">
+                    <input type="text" class="popup__text popup__text_type_first-name"/>
+                    <input type="text" class="popup__text popup__text_type_occupation"/>
                 </div>
                 <button class="popup__submit">Сохранить</button>
             </div>
-        </section> -->
+        </section>
     </div>
     <script src="./scripts/index.js"></script>
 </body>
