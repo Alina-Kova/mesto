@@ -1,6 +1,6 @@
 .profile__info {
     color: #ffffff;
-    width: 100%;
+    width: 282px;
     margin-top: 26px;
     margin-bottom: 36px;
 }
@@ -9,6 +9,6 @@
     .profile__info {
         margin-top: 0;
         margin-bottom: 0;
-        max-width: 336px;
+        width: 336px;
     }
 }

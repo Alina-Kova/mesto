@@ -1,12 +1,33 @@
-let openButton = document.querySelector('.popup_open')
-let overlay = document.querySelector('.overlay')
-let closeButton =  document.querySelector('.close-button')
+let openButton = document.querySelector('.profile__edit-button');
+let popup = document.querySelector('.popup');
+let closeButton =  popup.querySelector('.popup__close-button');
 
-openButton.addEventListener('click', () => {
-    overlay.classList.add('overlay_active')
-})
+let submitForm = popup.querySelector('.popup__input');
+let nameInput = document.querySelector('.profile__name');
+let descriptionInput = document.querySelector('.profile__description');
 
-closeButton.addEventListener('click', () => {
-    console.log("clicked")
-    overlay.classList.remove('overlay_active')
-    })
+let newName = submitForm.querySelector('.popup__text_type_name');
+let newOccupation = submitForm.querySelector('.popup__text_type_occupation');
+
+let togglePopup = () => {
+    popup.classList.toggle('popup_opened')
+};
+
+openButton.addEventListener('click', togglePopup);
+closeButton.addEventListener('click', togglePopup);
+
+popup.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+        togglePopup();
+    }
+});
+
+function handleFormSubmit (evt) {
+    evt.preventDefault();
+
+    nameInput.textContent = newName.value;
+    descriptionInput.textContent = newOccupation.value;
+    togglePopup();
+};
+
+submitForm.addEventListener('submit', handleFormSubmit);
