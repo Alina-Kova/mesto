@@ -31,4 +31,3 @@ function handleFormSubmit (evt) {
 };
 
 submitForm.addEventListener('submit', handleFormSubmit);
-console.log('submit');
