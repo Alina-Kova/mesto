@@ -47,4 +47,4 @@
 }
 ``` 
 
-С проектом можно ознакомиться на GitHub Pages по ссылке: https://alina-kova.github.io/
+С проектом можно ознакомиться на GitHub Pages по ссылке: https://alina-kova.github.io/mesto/index.html
