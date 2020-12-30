@@ -12,6 +12,7 @@
     right: -130px;
     cursor: pointer;
     border: 0;
+    outline: none;
 }
 
 @media screen and (min-width: 1280px) {

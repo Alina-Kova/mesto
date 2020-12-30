@@ -23,10 +23,10 @@
                     <img src="./Images/avatar.jpg" alt="фото профиля" class="profile__avatar">
                     <div class="profile__info">
                         <div class="profile__container">
-                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <h1 id="name" class="profile__name">Жак-Ив Кусто</h1>
                         <button class="profile__edit-button" type="button"></button>
                         </div>
-                        <p class="profile__description">Исследователь океана</p>
+                        <p id="description" class="profile__description">Исследователь океана</p>
                     </div>
                 </div>
                 <button class="profile__add-button" type="button"></button>
@@ -85,12 +85,12 @@
         </footer>
 
         <section class="popup">
-            <button class="popup__close-button" type="button" value="reset"></button>
+            <button class="popup__close-button" type="button"></button>
             <div class="popup__container">
                 <h2 class="popup__header">Редактировать профиль</h2>
                 <form class="popup__input" name="popupform">
-                    <input type="text" name="fullname" value="Жак-Ив Кусто" class="popup__text popup__text_type_name">
-                    <input type="text" name="occupation" value="Исследователь океана" class="popup__text popup__text_type_occupation">
+                    <input type="text" name="fullname" class="popup__text popup__text_type_name">
+                    <input type="text" name="occupation" class="popup__text popup__text_type_occupation">
                     <input type="submit" name="savebutton" value="Сохранить" class="popup__submit">
                 </form>
             </div>

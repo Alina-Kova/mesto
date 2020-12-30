@@ -22,6 +22,11 @@ popup.addEventListener('click', (event) => {
     }
 });
 
+openButton.addEventListener('click', (event) => {
+    newName.value = nameInput.innerHTML;
+    newOccupation.value = descriptionInput.innerHTML;
+});
+
 function handleFormSubmit (evt) {
     evt.preventDefault();
 
