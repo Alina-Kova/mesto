@@ -1,14 +1,11 @@
 .popup__input {
     margin: 75px auto 0;
     width: 238px;
-    height: calc(27px + 30px + 27px + 45px + 46px);
 }
 
 @media screen and (min-width: 1280px) {
     .popup__input {
-        margin-top: 48px;
-        margin-bottom: 37px;
+        margin-top: 54px;
         width: 358px;
-        height: calc(27px + 30px + 27px + 48px + 50px);
     }
 }
