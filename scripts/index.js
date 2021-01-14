@@ -1,15 +1,17 @@
-let openButton = document.querySelector('.profile__edit-button');
-let popup = document.querySelector('.popup');
-let closeButton =  popup.querySelector('.popup__close-button');
+const openButton = document.querySelector('.profile__edit-button');
+const popup = document.querySelector('.popup');
+const closeButton =  popup.querySelector('.popup__close-button');
 
-let submitForm = popup.querySelector('.popup__input');
-let nameInput = document.querySelector('.profile__name');
-let descriptionInput = document.querySelector('.profile__description');
+const submitForm = popup.querySelector('.popup__input');
+const nameInput = document.querySelector('.profile__name');
+const descriptionInput = document.querySelector('.profile__description');
 
-let newName = submitForm.querySelector('.popup__text_type_name');
-let newOccupation = submitForm.querySelector('.popup__text_type_occupation');
+const newName = submitForm.querySelector('.popup__text_type_name');
+const newOccupation = submitForm.querySelector('.popup__text_type_occupation');
 
-let togglePopup = () => {
+const like = document.querySelectorAll('.elements__like')
+
+const togglePopup = () => {
     popup.classList.toggle('popup_opened')
 };
 
@@ -36,3 +38,9 @@ function handleFormSubmit (evt) {
 };
 
 submitForm.addEventListener('submit', handleFormSubmit);
+
+like.forEach(function(el) {
+    el.addEventListener('click', function(evt) {
+        evt.target.classList.toggle('elements__like_active');
+    });
+});
