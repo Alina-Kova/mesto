@@ -1,6 +1,5 @@
 .elements__delete {
     position: absolute;
-    z-index: 1;
     background-image: url(../../../Images/trash.svg);
     background-repeat: no-repeat;
     background-position: inherit;

@@ -9,13 +9,14 @@
     height: 50px;
     cursor: pointer;
     padding: 0;
-    border: 2px solid #FFFFFF;
-    border-radius: 2px;
+    border: 0 solid #FFFFFF;
+    border-style: none;
+    /* border-radius: 2px; */
 }
 
 @media screen and (min-width: 1280px) {
     .profile__add-button {
-        /* background-image: url(../../../Images/add-button_2.svg); */
+        background-image: url(../../../Images/add-button_2.svg);
         /* background-size: auto; */
         background-size: cover;
         width: 150px;
