@@ -6,7 +6,7 @@
     transform: rotate(-45deg);
     width: 26px;
     height: 26px;
-    position: absolute;
+    position: relative;
     display: flex;
     top: 0;
     right: -130px;
