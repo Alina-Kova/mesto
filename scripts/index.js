@@ -1,3 +1,4 @@
+// объявленные переменные
 const editButtonOpened = document.querySelector('.profile__edit-button');
 const addButtonOpened = document.querySelector('.profile__add-button');
 
@@ -10,8 +11,8 @@ const closeButtonAdd = popupAdd.querySelector('.popup__close-button_form_add');
 const closeButtonEdit = popupEdit.querySelector('.popup__close-button_form_edit');
 const closeButtonShow = popupImage.querySelector('.popup__close-image');
 
-const submitEditForm = document.querySelector('.popup__input_function_edit');
-const submitAddForm = document.querySelector('.popup__input_function_add');
+const submitEditForm = popupEdit.querySelector('.popup__input_function_edit');
+const submitAddForm = popupAdd.querySelector('.popup__input_function_add');
 
 const nameInput = document.querySelector('.profile__name');
 const descriptionInput = document.querySelector('.profile__description');
@@ -48,7 +49,7 @@ popupAdd.addEventListener('click', (event) => {
     }
 });
 
-//редактирование профиля, функция обработки формы редактирования изначальная версия
+//редактирование профиля, функция обработки формы редактирования
 editButtonOpened.addEventListener('click', (event) => {
 
     newName.value = nameInput.innerHTML;
@@ -104,7 +105,7 @@ const likeButton = (evt) => {
   evt.target.classList.toggle('elements__like_active');
 }
 
-// открытие/закрытие формы с картинками коиком по крестику
+// открытие/закрытие формы с картинками кликом по крестику
 const togglePopupImage = () => {
   popupImage.classList.toggle('popup_opened')
 };
@@ -125,7 +126,7 @@ const showImage = (evt) => {
   popupImage.querySelector('.popup__caption').textContent = evt.target.nextElementSibling.querySelector('.elements__card-name').textContent;
 }
 
-// функция обработки формы добакления карточек
+// функция обработки формы добавления карточек
 const renderCard = (newImage, newCaption) => {
   const elementsTemplate = document.querySelector('.template').content;
   const newElement = elementsTemplate.cloneNode(true);
