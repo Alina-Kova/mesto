@@ -46,9 +46,9 @@
             <div class="popup__container">
                 <h2 class="popup__header">Редактировать профиль</h2>
                 <form class="popup__input popup__input_function_edit" name="popupform">
-                    <input type="text" name="fullname" class="popup__text popup__text_type_name">
-                    <input type="text" name="occupation" class="popup__text popup__text_type_occupation">
-                    <input type="submit" name="savebutton" value="Сохранить" class="popup__submit">
+                    <input type="text" name="fullname" placeholder="Имя" class="popup__text popup__text_type_name" required>
+                    <input type="text" name="occupation" placeholder="Род деятельности" class="popup__text popup__text_type_occupation" required>
+                    <input type="submit" name="savebutton" value="Сохранить" class="popup__submit popup__submit_function_save">
                 </form>
             </div>
         </section>
@@ -59,10 +59,10 @@
                 <h2 class="popup__header">Новое место</h2>
                 <form class="popup__input popup__input_function_add" name="popupform">
                     <input type="text" name="placename" placeholder="Название"
-                        class="popup__text popup__text_type_place">
+                        class="popup__text popup__text_type_place" required>
                     <input type="text" name="url" placeholder="Ссылка на картинку"
                         class="popup__text popup__text_type_link" required>
-                    <input type="submit" name="createbutton" value="Создать" class="popup__submit">
+                    <input type="submit" name="createbutton" value="Создать" class="popup__submit popup__submit_function_create">
                 </form>
             </div>
         </section>
@@ -89,6 +89,7 @@
         </template>
 
     </div>
+    <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 

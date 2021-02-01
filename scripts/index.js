@@ -2,6 +2,9 @@
 const editButtonOpened = document.querySelector('.profile__edit-button');
 const addButtonOpened = document.querySelector('.profile__add-button');
 
+const elementsTemplate = document.querySelector('.template');
+const cardsList = document.querySelector('.elements__list');
+
 const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup_function_edit');
 const popupAdd = document.querySelector('.popup_function_add');
@@ -14,86 +17,62 @@ const closeButtonShow = popupImage.querySelector('.popup__close-image');
 const submitEditForm = popupEdit.querySelector('.popup__input_function_edit');
 const submitAddForm = popupAdd.querySelector('.popup__input_function_add');
 
+const submitButtonEdit = popupEdit.querySelector('.popup__submit_function_save');
+const submitButtonAdd = popupAdd.querySelector('.popup__submit_function_create');
+
 const nameInput = document.querySelector('.profile__name');
 const descriptionInput = document.querySelector('.profile__description');
 const newName = popup.querySelector('.popup__text_type_name');
 const newOccupation = popup.querySelector('.popup__text_type_occupation');
 
-// открытие/закрытие формы редактирования профиля
-const togglePopupEdit = () => {
-    popupEdit.classList.toggle('popup_opened')
+//функция открытия попапов
+const openPopup = (popup) => {
+  popup.classList.add('popup_opened');
 };
 
-editButtonOpened.addEventListener('click', togglePopupEdit);
-closeButtonEdit.addEventListener('click', togglePopupEdit);
+editButtonOpened.addEventListener('click', () => openPopup(popupEdit));
+addButtonOpened.addEventListener('click', () => openPopup(popupAdd));
 
-// возможность закрытия окна редактирования профиля кликом по overlay
-popupEdit.addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
-        togglePopupEdit();
-    }
-});
-
-// открытие/закрытие формы добавления карточек
-const togglePopupAdd = () => {
-    popupAdd.classList.toggle('popup_opened')
+//функция закрытия попапов кликом по кнопе закрытия
+const closePopup = (evt) => {
+  evt.target.closest('.popup').classList.remove('popup_opened')
 };
-    
-addButtonOpened.addEventListener('click', togglePopupAdd);
-closeButtonAdd.addEventListener('click', togglePopupAdd);
 
-// возможность закрытия окна добавления карточек кликом по overlay    
-popupAdd.addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
-        togglePopupAdd();
-    }
-});
+closeButtonEdit.addEventListener('click', closePopup);
+closeButtonAdd.addEventListener('click', closePopup);
+closeButtonShow.addEventListener('click', closePopup);
+
+submitButtonAdd.addEventListener('click', closePopup);
+submitButtonEdit.addEventListener('click', closePopup);
+
+//функция закрытия попапов кликом по overlay
+function closeOverlay(evt) {
+  if (evt.target === evt.currentTarget) {
+    evt.target.closest('.popup').classList.remove('popup_opened')
+  }
+}
+
+popupEdit.addEventListener('click', closeOverlay);
+popupAdd.addEventListener('click', closeOverlay);
+popupImage.addEventListener('click', closeOverlay);
 
 //редактирование профиля, функция обработки формы редактирования
-editButtonOpened.addEventListener('click', (event) => {
+editButtonOpened.addEventListener('click', () => {
 
-    newName.value = nameInput.innerHTML;
-    newOccupation.value = descriptionInput.innerHTML;
+  newName.value = nameInput.textContent;
+  newOccupation.value = descriptionInput.textContent;
 });
 
 function handleEditFormSubmit(evt) {
-    evt.preventDefault();
+  evt.preventDefault();
 
-    nameInput.textContent = newName.value;
-    descriptionInput.textContent = newOccupation.value;
+  nameInput.textContent = newName.value;
+  descriptionInput.textContent = newOccupation.value;
 
-    togglePopupEdit();
+  submitButtonEdit.addEventListener('click', closePopup);
 };
 
 submitEditForm.addEventListener('submit', handleEditFormSubmit);
-
-// массив с карточками
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 // кнопка удаления карточки
 const deleteButton = (evt) => {
@@ -105,60 +84,53 @@ const likeButton = (evt) => {
   evt.target.classList.toggle('elements__like_active');
 }
 
-// открытие/закрытие формы с картинками кликом по крестику
-const togglePopupImage = () => {
-  popupImage.classList.toggle('popup_opened')
-};
-
-closeButtonShow.addEventListener('click', togglePopupImage);
-
-// открытие/закрытие формы с картинками кликом по overlay
-popupImage.addEventListener('click', (event) => {
-  if (event.target === event.currentTarget) {
-    togglePopupImage();
-  }
-});
-
 // функция обработки события клика по картинке = открытие картинки 
 const showImage = (evt) => {
-  togglePopupImage();
+  openPopup(popupImage);
   popupImage.querySelector('.popup__image').src = evt.target.src;
   popupImage.querySelector('.popup__caption').textContent = evt.target.nextElementSibling.querySelector('.elements__card-name').textContent;
+  popupImage.querySelector('.popup__image').setAttribute('alt', document.querySelector('.elements__card-name').textContent);
 }
 
-// функция обработки формы добавления карточек
-const renderCard = (newImage, newCaption) => {
-  const elementsTemplate = document.querySelector('.template').content;
-  const newElement = elementsTemplate.cloneNode(true);
+// функция получения элементов карточки
+const getCardElement = (newImage, newCaption) => {
+  const newElement = elementsTemplate.content.cloneNode(true);
+
   newElement.querySelector('.elements__photo').src = newImage;
   newElement.querySelector('.elements__card-name').textContent = newCaption;
   newElement.querySelector('.elements__photo').setAttribute('alt', newCaption);
-  const cardsList = document.querySelector('.elements__list');
-  cardsList.prepend(newElement);
 
-  cardsList.querySelector('.elements__like').addEventListener('click', likeButton);
-  cardsList.querySelector('.elements__delete').addEventListener('click', deleteButton);
-  cardsList.querySelector('.elements__photo').addEventListener('click', showImage);
+  newElement.querySelector('.elements__like').addEventListener('click', likeButton);
+  newElement.querySelector('.elements__delete').addEventListener('click', deleteButton);
+  newElement.querySelector('.elements__photo').addEventListener('click', showImage);
+
+  return newElement;
+}
+
+// использует функцию возвращения разметки карточки добавляя ее на страницу в определенную область разметки
+const renderCards = (newImage, newCaption) => {
+  const newElement = getCardElement(newImage, newCaption);
+  cardsList.prepend(newElement);
 }
 
 // обработка элеменов массива
 const addCard = (Array) => {
   Array.forEach((item) => {
-    renderCard(item.link, item.name);
+    renderCards(item.link, item.name);
   })
 }
-
 addCard(initialCards);
 
 // функция обработки формы добавления новой карточки
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
 
-  const newLink = document.querySelector('.popup__text_type_link').value;
-  const newPlace = document.querySelector('.popup__text_type_place').value;
+  const newLink = submitAddForm.querySelector('.popup__text_type_link').value;
+  const newPlace = submitAddForm.querySelector('.popup__text_type_place').value;
 
-  renderCard(newLink, newPlace);
-  togglePopupAdd();
+  renderCards(newLink, newPlace);
+
+  submitButtonAdd.addEventListener('click', closePopup);
+  submitAddForm.reset();
 };
-
 submitAddForm.addEventListener('submit', handleAddFormSubmit);
