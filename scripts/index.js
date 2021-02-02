@@ -9,6 +9,7 @@ const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup_function_edit');
 const popupAdd = document.querySelector('.popup_function_add');
 const popupImage = document.querySelector('.popup_function_show');
+const popupCardImage = popupImage.querySelector('.popup__image');
 
 const closeButtonAdd = popupAdd.querySelector('.popup__close-button_form_add');
 const closeButtonEdit = popupEdit.querySelector('.popup__close-button_form_edit');
@@ -42,13 +43,10 @@ closeButtonEdit.addEventListener('click', closePopup);
 closeButtonAdd.addEventListener('click', closePopup);
 closeButtonShow.addEventListener('click', closePopup);
 
-submitButtonAdd.addEventListener('click', closePopup);
-submitButtonEdit.addEventListener('click', closePopup);
-
 //функция закрытия попапов кликом по overlay
 function closeOverlay(evt) {
   if (evt.target === evt.currentTarget) {
-    evt.target.closest('.popup').classList.remove('popup_opened')
+    closePopup(evt)
   }
 }
 
@@ -69,7 +67,7 @@ function handleEditFormSubmit(evt) {
   nameInput.textContent = newName.value;
   descriptionInput.textContent = newOccupation.value;
 
-  submitButtonEdit.addEventListener('click', closePopup);
+  closePopup(evt);
 };
 
 submitEditForm.addEventListener('submit', handleEditFormSubmit);
@@ -87,22 +85,26 @@ const likeButton = (evt) => {
 // функция обработки события клика по картинке = открытие картинки 
 const showImage = (evt) => {
   openPopup(popupImage);
-  popupImage.querySelector('.popup__image').src = evt.target.src;
-  popupImage.querySelector('.popup__caption').textContent = evt.target.nextElementSibling.querySelector('.elements__card-name').textContent;
-  popupImage.querySelector('.popup__image').setAttribute('alt', document.querySelector('.elements__card-name').textContent);
+  popupCardImage.src = evt.target.src;
+  popupImage.querySelector('.popup__caption').textContent = evt.target.nextElementSibling.textContent;
+  popupCardImage.setAttribute('alt', evt.target.nextElementSibling.textContent);
 }
 
 // функция получения элементов карточки
 const getCardElement = (newImage, newCaption) => {
   const newElement = elementsTemplate.content.cloneNode(true);
+  const elementImage = newElement.querySelector('.elements__photo');
+  const elementCardName = newElement.querySelector('.elements__card-name');
+  const elementLike = newElement.querySelector('.elements__like');
+  const elementDelete = newElement.querySelector('.elements__delete');
 
-  newElement.querySelector('.elements__photo').src = newImage;
-  newElement.querySelector('.elements__card-name').textContent = newCaption;
-  newElement.querySelector('.elements__photo').setAttribute('alt', newCaption);
+  elementImage.src = newImage;
+  elementCardName.textContent = newCaption;
+  elementImage.setAttribute('alt', newCaption);
 
-  newElement.querySelector('.elements__like').addEventListener('click', likeButton);
-  newElement.querySelector('.elements__delete').addEventListener('click', deleteButton);
-  newElement.querySelector('.elements__photo').addEventListener('click', showImage);
+  elementLike.addEventListener('click', likeButton);
+  elementDelete.addEventListener('click', deleteButton);
+  elementImage.addEventListener('click', showImage);
 
   return newElement;
 }
@@ -129,8 +131,7 @@ function handleAddFormSubmit(evt) {
   const newPlace = submitAddForm.querySelector('.popup__text_type_place').value;
 
   renderCards(newLink, newPlace);
-
-  submitButtonAdd.addEventListener('click', closePopup);
+  closePopup(evt);
   submitAddForm.reset();
 };
 submitAddForm.addEventListener('submit', handleAddFormSubmit);
