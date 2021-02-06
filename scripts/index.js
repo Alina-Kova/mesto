@@ -29,6 +29,7 @@ const newOccupation = popup.querySelector('.popup__text_type_occupation');
 //функция открытия попапов
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', keyEscHandler);
 };
 
 editButtonOpened.addEventListener('click', () => openPopup(popupEdit));
@@ -36,7 +37,7 @@ addButtonOpened.addEventListener('click', () => openPopup(popupAdd));
 
 //функция закрытия попапов кликом по кнопе закрытия
 const closePopup = (evt) => {
-  evt.target.closest('.popup').classList.remove('popup_opened')
+  evt.target.closest('.popup').classList.remove('popup_opened');
 };
 
 closeButtonEdit.addEventListener('click', closePopup);
@@ -46,13 +47,26 @@ closeButtonShow.addEventListener('click', closePopup);
 //функция закрытия попапов кликом по overlay
 function closeOverlay(evt) {
   if (evt.target === evt.currentTarget) {
-    closePopup(evt)
+    closePopup(evt);
   }
 }
 
 popupEdit.addEventListener('click', closeOverlay);
 popupAdd.addEventListener('click', closeOverlay);
 popupImage.addEventListener('click', closeOverlay);
+
+//закрытие попапов клавишей Esc
+const closeEscape = (popup) => {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', keyEscHandler);
+};
+
+const keyEscHandler = (evt) => {
+  const popupOpened = document.querySelector('.popup_opened');
+  if (evt.keyCode == 27) {
+    closeEscape(popupOpened);
+  }
+}
 
 //редактирование профиля, функция обработки формы редактирования
 editButtonOpened.addEventListener('click', () => {
