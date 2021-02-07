@@ -70,9 +70,10 @@ const keyEscHandler = (evt) => {
 
 //редактирование профиля, функция обработки формы редактирования
 editButtonOpened.addEventListener('click', () => {
-
+  if (popupEdit != null){
   newName.value = nameInput.textContent;
   newOccupation.value = descriptionInput.textContent;
+}
 });
 
 function handleEditFormSubmit(evt) {
@@ -80,7 +81,6 @@ function handleEditFormSubmit(evt) {
 
   nameInput.textContent = newName.value;
   descriptionInput.textContent = newOccupation.value;
-
   closePopup(evt);
 };
 

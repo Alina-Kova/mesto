@@ -46,9 +46,16 @@
             <div class="popup__container">
                 <h2 class="popup__header">Редактировать профиль</h2>
                 <form class="popup__input popup__input_function_edit" name="popupform">
-                    <input type="text" name="fullname" placeholder="Имя" class="popup__text popup__text_type_name" required>
-                    <input type="text" name="occupation" placeholder="Род деятельности" class="popup__text popup__text_type_occupation" required>
-                    <input type="submit" name="savebutton" value="Сохранить" class="popup__submit popup__submit_function_save">
+                    <input type="text" name="fullname" placeholder="Имя"
+                        class="popup__text popup__text_type_name" id="name-input" required minlength="2"
+                        maxlength="40">
+                    <span class="popup__error" id="name-input-error"></span>
+                    <input type="text" name="occupation" placeholder="Род деятельности"
+                        class="popup__text popup__text_type_occupation" id="occupation-input" required minlength="2"
+                        maxlength="400">
+                    <span class="popup__error" id="occupation-input-error"></span>
+                    <input type="submit" name="savebutton" value="Сохранить"
+                        class="popup__submit popup__submit_function_save">
                 </form>
             </div>
         </section>
@@ -59,10 +66,14 @@
                 <h2 class="popup__header">Новое место</h2>
                 <form class="popup__input popup__input_function_add" name="popupform">
                     <input type="text" name="placename" placeholder="Название"
-                        class="popup__text popup__text_type_place" required>
-                    <input type="text" name="url" placeholder="Ссылка на картинку"
-                        class="popup__text popup__text_type_link" required>
-                    <input type="submit" name="createbutton" value="Создать" class="popup__submit popup__submit_function_create">
+                        class="popup__text popup__text_type_place" id="place-input" required minlength="2"
+                        maxlength="30">
+                    <span class="popup__error place-input-error" id="place-input-error"></span>
+                    <input type="url" name="url" placeholder="Ссылка на картинку"
+                        class="popup__text popup__text_type_link" id="link-input" required>
+                    <span class="popup__error" id="link-input-error"></span>
+                    <input type="submit" name="createbutton" value="Создать"
+                        class="popup__submit popup__submit_function_create">
                 </form>
             </div>
         </section>
@@ -89,9 +100,9 @@
         </template>
 
     </div>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
-    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
