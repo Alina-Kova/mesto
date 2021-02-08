@@ -42,13 +42,12 @@
         </footer>
 
         <section class="popup popup_function_edit">
-            <button class="popup__close-button popup__close-button_form_edit" type="button"></button>
+            <button class="popup__close-button popup__close-button_form_edit popup__close" type="button"></button>
             <div class="popup__container">
                 <h2 class="popup__header">Редактировать профиль</h2>
-                <form class="popup__input popup__input_function_edit" name="popupform">
-                    <input type="text" name="fullname" placeholder="Имя"
-                        class="popup__text popup__text_type_name" id="name-input" required minlength="2"
-                        maxlength="40">
+                <form class="popup__input popup__input_function_edit" name="popupform" novalidate>
+                    <input type="text" name="fullname" placeholder="Имя" class="popup__text popup__text_type_name"
+                        id="name-input" required minlength="2" maxlength="40">
                     <span class="popup__error" id="name-input-error"></span>
                     <input type="text" name="occupation" placeholder="Род деятельности"
                         class="popup__text popup__text_type_occupation" id="occupation-input" required minlength="2"
@@ -61,10 +60,10 @@
         </section>
 
         <section class="popup popup_function_add">
-            <button class="popup__close-button popup__close-button_form_add" type="button"></button>
+            <button class="popup__close-button popup__close-button_form_add popup__close" type="button"></button>
             <div class="popup__container">
                 <h2 class="popup__header">Новое место</h2>
-                <form class="popup__input popup__input_function_add" name="popupform">
+                <form class="popup__input popup__input_function_add" name="popupform" novalidate>
                     <input type="text" name="placename" placeholder="Название"
                         class="popup__text popup__text_type_place" id="place-input" required minlength="2"
                         maxlength="30">
@@ -80,7 +79,7 @@
 
         <section class="popup popup_function_show">
             <div class="popup__section">
-                <button class="popup__close-image" type="button"></button>
+                <button class="popup__close-button popup__close-image popup__close" type="button"></button>
                 <figure class="popup__wrapper">
                     <img src="#" class="popup__image" alt="#">
                     <figcaption class="popup__caption"></figcaption>
