@@ -1,8 +1,13 @@
+// import Card from '../scripts/Card.js';
+import FormValidator from '../scripts/FormValidator.js';
+import initialCards from '../scripts/cards.js';
+
 // объявленные переменные
 const editButtonOpened = document.querySelector('.profile__edit-button');
 const addButtonOpened = document.querySelector('.profile__add-button');
 
 const elementsTemplate = document.querySelector('.template');
+// возможно удалить template
 const cardsList = document.querySelector('.elements__list');
 
 const popups = document.querySelectorAll('.popup');
@@ -14,8 +19,8 @@ const popupCardImage = popupImage.querySelector('.popup__image');
 const submitEditForm = popupEdit.querySelector('.popup__input_function_edit');
 const submitAddForm = popupAdd.querySelector('.popup__input_function_add');
 
-const submitButtonEdit = popupEdit.querySelector('.popup__submit_function_save');
-const submitButtonAdd = popupAdd.querySelector('.popup__submit_function_create');
+// const submitButtonEdit = popupEdit.querySelector('.popup__submit_function_save');
+// const submitButtonAdd = popupAdd.querySelector('.popup__submit_function_create');
 
 const nameInput = document.querySelector('.profile__name');
 const descriptionInput = document.querySelector('.profile__description');
@@ -23,6 +28,15 @@ const newName = submitEditForm.querySelector('.popup__text_type_name');
 const newOccupation = submitEditForm.querySelector('.popup__text_type_occupation');
 const newLink = submitAddForm.querySelector('.popup__text_type_link');
 const newPlace = submitAddForm.querySelector('.popup__text_type_place');
+
+const validatorSettings = {
+  formSelector: '.popup__input',
+  inputSelector: '.popup__text',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_disabled',
+  errorClass: 'popup__error_active'
+};
+
 
 //функция открытия попапов
 const openPopup = (popups) => {
@@ -35,9 +49,9 @@ addButtonOpened.addEventListener('click', () => openPopup(popupAdd));
 
 //функция закрытия
 const closePopup = (evt) => {
-    evt.closest('.popup').classList.remove('popup_opened');
-    document.removeEventListener('keydown', keyEscHandler);
-  }
+  evt.closest('.popup').classList.remove('popup_opened');
+  document.removeEventListener('keydown', keyEscHandler);
+}
 
 popups.forEach((popup) => {
   popup.addEventListener('click', (evt) => {
@@ -60,10 +74,10 @@ const keyEscHandler = (evt) => {
 
 //редактирование профиля, функция обработки формы редактирования
 editButtonOpened.addEventListener('click', () => {
-  if (popupEdit != null){
-  newName.value = nameInput.textContent;
-  newOccupation.value = descriptionInput.textContent;
-}
+  if (popupEdit != null) {
+    newName.value = nameInput.textContent;
+    newOccupation.value = descriptionInput.textContent;
+  }
 });
 
 function handleEditFormSubmit(evt) {
@@ -137,3 +151,9 @@ function handleAddFormSubmit(evt) {
   submitAddForm.reset();
 };
 submitAddForm.addEventListener('submit', handleAddFormSubmit);
+
+const editFormValidator = new FormValidator(validatorSettings, popupEdit);
+editFormValidator.enableValidation();
+
+const addFormValidator = new FormValidator(validatorSettings, popupAdd);
+addFormValidator.enableValidation();
