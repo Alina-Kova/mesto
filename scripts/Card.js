@@ -30,12 +30,12 @@ class Card {
 	}
 
 	// метод лайка карточки
-	_likeButton() {
+	_likeCard() {
 		this._element.querySelector('.elements__like').classList.toggle('elements__like_active');
 	}
 
 	// метод удаления карточки
-	_deleteButton() {
+	_deleteCard() {
 		this._element.querySelector('.elements__delete').closest('.elements__card').remove();
 	}
 
@@ -46,12 +46,13 @@ class Card {
 		});
 
 		this._element.querySelector('.elements__like').addEventListener('click', () => {
-			this._likeButton()
+			this._likeCard()
 		});
 
 		this._element.querySelector('.elements__delete').addEventListener('click', () => {
-			this._deleteButton()
+			this._deleteCard()
 		})
 	}
 }
+
 export default Card;

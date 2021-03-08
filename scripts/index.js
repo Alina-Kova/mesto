@@ -35,7 +35,7 @@ const validatorSettings = {
 //функция открытия попапов
 const openPopup = (popups) => {
   popups.classList.add('popup_opened');
-  document.addEventListener('keydown', keyEscHandler);
+  document.addEventListener('keydown', handleKeyEsc);
 }
 
 editButtonOpened.addEventListener('click', () => openPopup(popupEdit));
@@ -44,7 +44,7 @@ addButtonOpened.addEventListener('click', () => openPopup(popupAdd));
 //функция закрытия
 const closePopup = (evt) => {
   evt.closest('.popup').classList.remove('popup_opened');
-  document.removeEventListener('keydown', keyEscHandler);
+  document.removeEventListener('keydown', handleKeyEsc);
 }
 
 // функция обработки попапов кликом по крестику или по overlay
@@ -60,7 +60,7 @@ popups.forEach((popup) => {
 });
 
 //функция закрытия нажатием клавиши esc
-const keyEscHandler = (evt) => {
+const handleKeyEsc = (evt) => {
   const popupOpened = document.querySelector('.popup_opened');
   if (evt.keyCode == 27) {
     closePopup(popupOpened)
