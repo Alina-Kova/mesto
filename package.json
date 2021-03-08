@@ -1,0 +1,23 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "------------------------------------------------------------ ## Проект создан для практики и закрепления базовых знаний JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alina-Kova/mesto.git"
+  },
+  "author": "Alina Kotikova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alina-Kova/mesto/issues"
+  },
+  "homepage": "https://github.com/Alina-Kova/mesto#readme",
+  "devDependencies": {
+    "webpack": "^5.24.3",
+    "webpack-cli": "^4.5.0"
+  }
+}

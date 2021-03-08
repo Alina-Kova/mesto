@@ -1,4 +1,4 @@
-// import Card from '../scripts/Card.js';
+import Card from '../scripts/Card.js';
 import FormValidator from '../scripts/FormValidator.js';
 import initialCards from '../scripts/cards.js';
 
@@ -6,8 +6,6 @@ import initialCards from '../scripts/cards.js';
 const editButtonOpened = document.querySelector('.profile__edit-button');
 const addButtonOpened = document.querySelector('.profile__add-button');
 
-const elementsTemplate = document.querySelector('.template');
-// возможно удалить template
 const cardsList = document.querySelector('.elements__list');
 
 const popups = document.querySelectorAll('.popup');
@@ -18,9 +16,6 @@ const popupCardImage = popupImage.querySelector('.popup__image');
 
 const submitEditForm = popupEdit.querySelector('.popup__input_function_edit');
 const submitAddForm = popupAdd.querySelector('.popup__input_function_add');
-
-// const submitButtonEdit = popupEdit.querySelector('.popup__submit_function_save');
-// const submitButtonAdd = popupAdd.querySelector('.popup__submit_function_create');
 
 const nameInput = document.querySelector('.profile__name');
 const descriptionInput = document.querySelector('.profile__description');
@@ -37,7 +32,6 @@ const validatorSettings = {
   errorClass: 'popup__error_active'
 };
 
-
 //функция открытия попапов
 const openPopup = (popups) => {
   popups.classList.add('popup_opened');
@@ -53,6 +47,7 @@ const closePopup = (evt) => {
   document.removeEventListener('keydown', keyEscHandler);
 }
 
+// функция обработки попапов кликом по крестику или по overlay
 popups.forEach((popup) => {
   popup.addEventListener('click', (evt) => {
     if (evt.target.classList.contains('popup_opened')) {
@@ -72,7 +67,7 @@ const keyEscHandler = (evt) => {
   }
 }
 
-//редактирование профиля, функция обработки формы редактирования
+//редактирование профиля
 editButtonOpened.addEventListener('click', () => {
   if (popupEdit != null) {
     newName.value = nameInput.textContent;
@@ -80,6 +75,7 @@ editButtonOpened.addEventListener('click', () => {
   }
 });
 
+// функция обработки формы редактирования
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
 
@@ -90,54 +86,32 @@ function handleEditFormSubmit(evt) {
 
 submitEditForm.addEventListener('submit', handleEditFormSubmit);
 
-// кнопка удаления карточки
-const deleteButton = (evt) => {
-  evt.target.closest('.elements__card').remove();
-}
-
-// кнопка лайк карточки
-const likeButton = (evt) => {
-  evt.target.classList.toggle('elements__like_active');
-}
-
 // функция обработки события клика по картинке = открытие картинки 
-const showImage = (newImage, newCaption) => {
+const showImage = (link, name) => {
+  popupCardImage.src = link;
+  popupImage.querySelector('.popup__caption').textContent = name;
+  popupCardImage.setAttribute('alt', name);
   openPopup(popupImage);
-  popupCardImage.src = newImage;
-  popupImage.querySelector('.popup__caption').textContent = newCaption;
-  popupCardImage.setAttribute('alt', newCaption);
 }
 
-// функция получения элементов карточки
-const getCardElement = (newImage, newCaption) => {
-  const newElement = elementsTemplate.content.cloneNode(true);
-  const elementImage = newElement.querySelector('.elements__photo');
-  const elementCardName = newElement.querySelector('.elements__card-name');
-  const elementLike = newElement.querySelector('.elements__like');
-  const elementDelete = newElement.querySelector('.elements__delete');
-  elementImage.src = newImage;
-  elementCardName.textContent = newCaption;
-  elementImage.setAttribute('alt', newCaption);
-
-  elementLike.addEventListener('click', likeButton);
-  elementDelete.addEventListener('click', deleteButton);
-  elementImage.addEventListener('click', () => {
-    showImage(newImage, newCaption)
-  });
-
-  return newElement;
+// функция получения элементов карточки из класса Card
+const createCard = (data) => {
+  const card = new Card(data, '.template', showImage);
+  const cardElement = card.generateCard();
+  
+  return cardElement;
 }
 
 // использует функцию возвращения разметки карточки добавляя ее на страницу в определенную область разметки
-const renderCards = (newImage, newCaption) => {
-  const newElement = getCardElement(newImage, newCaption);
+const renderCards = (item) => {
+  const newElement = createCard(item);
   cardsList.prepend(newElement);
-}
+};
 
 // обработка элеменов массива
 const addCard = (Array) => {
   Array.forEach((item) => {
-    renderCards(item.link, item.name);
+    renderCards(item);
   })
 }
 addCard(initialCards);
@@ -146,14 +120,21 @@ addCard(initialCards);
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
 
-  renderCards(newLink.value, newPlace.value);
+  const newItem = {
+    link: newLink.value,
+    name: newPlace.value
+  };
+
+  renderCards(newItem);
   closePopup(evt.target.closest('.popup'));
   submitAddForm.reset();
 };
 submitAddForm.addEventListener('submit', handleAddFormSubmit);
 
+// создание экземпляра класса валидации для формы редактирования и включение в ней валидации
 const editFormValidator = new FormValidator(validatorSettings, popupEdit);
 editFormValidator.enableValidation();
 
+// создание экземпляра класса для формы добавления карточки и включение в ней валидации
 const addFormValidator = new FormValidator(validatorSettings, popupAdd);
 addFormValidator.enableValidation();
