@@ -41,8 +41,8 @@ class Card {
 
 	// метод добавления слушателя событий
 	_setEventListeners() {
-		this._element.querySelector('.elements__photo').addEventListener('click', () => { 
-			this._handleCardClick(this._link, this._name)
+		this._element.querySelector('.elements__photo').addEventListener('click', () => {
+			this._handleCardClick(this._link, this._name) 
 		});
 
 		this._element.querySelector('.elements__like').addEventListener('click', () => {
