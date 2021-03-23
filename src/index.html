@@ -8,19 +8,18 @@
     <meta name="keywords" content="Место, яндекс, практикум">
     <meta name="author" content="Алина Котикова">
     <title>Место</title>
-    <link rel="stylesheet" href="./pages/index.css" type="text/css">
 </head>
 
 <body>
     <div class="page">
 
         <header class="header">
-            <img src="./Images/header-logo.svg" alt="логотип Место" class="header__logo">
+            <img src="<%=require('../Images/header-logo.svg')%>" alt="логотип Место" class="header__logo">
         </header>
         <main class="content">
             <section class="profile">
                 <div class="profile__section">
-                    <img src="./Images/avatar.jpg" alt="фото профиля" class="profile__avatar">
+                    <img src="<%=require('../Images/avatar.jpg')%>" alt="фото профиля" class="profile__avatar">
                     <div class="profile__info">
                         <div class="profile__container">
                             <h1 id="name" class="profile__name">Жак-Ив Кусто</h1>
@@ -99,7 +98,6 @@
         </template>
 
     </div>
-    <script type="module" src="./src/index.js"></script>
 </body>
 
 </html>
