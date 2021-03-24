@@ -1,11 +1,11 @@
-import '../pages/index.css';
-import Card from '../scripts/Card.js';
-import FormValidator from '../scripts/FormValidator.js';
-import initialCards from '../scripts/cards.js';
-import Section from '../scripts/Section.js';
-import UserInfo from '../scripts/UserInfo.js';
-import PopupWithImage from '../scripts/PopupWithImage.js';
-import PopupWithForm from '../scripts/PopupWithForm.js';
+import './index.css';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import initialCards from '../utils/cards.js';
+import Section from '../components/Section.js';
+import UserInfo from '../components/UserInfo.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
 
 // объявленные переменные
 const editButtonOpened = document.querySelector('.profile__edit-button');
@@ -80,7 +80,6 @@ const popupEditCard = new PopupWithForm({
     popupEditCard.close();
   }
 })
-console.log(userInfo);
 popupEditCard.setEventListeners();
 
 // создание экземпляра класса валидации для формы редактирования и включение в ней валидации

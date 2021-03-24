@@ -19,7 +19,7 @@ class Popup {
 
     //метод закрытия попапа нажатием клавишы esc
     _handleKeyEsc(evt) {
-        if (evt.keyCode == 27) {
+        if (evt.keyCode === 27) {
             this.close();
         }
     }
