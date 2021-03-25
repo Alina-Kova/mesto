@@ -18,7 +18,7 @@ class Card {
 	}
 
 // метод добавление данных в разметку
-	generateCard() {
+	generateCard() {	
 		this._element = this._getTemplate();
 
 		this._element.querySelector('.elements__photo').src = this._link;

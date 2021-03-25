@@ -15,9 +15,7 @@ const popupEdit = document.querySelector('.popup_function_edit');
 const popupAdd = document.querySelector('.popup_function_add');
 
 const newName = document.querySelector('.popup__text_type_name');
-const newOccupation = document.querySelector('.popup__text_type_occupation');
-const newLink = document.querySelector('.popup__text_type_link');
-const newPlace = document.querySelector('.popup__text_type_place');
+const newOccupation = document.querySelector('.popup__text_type_occupation'); 
 
 const validatorSettings = {
   formSelector: '.popup__input',
@@ -60,10 +58,10 @@ cardList.renderItems();
 //создание экземпляра класса для формы добавления карточки
 const popupAddCard = new PopupWithForm({
   popupSelector: '.popup_function_add',
-  handleFormSubmit: () => {
-    const newItem = {
-    link: newLink.value,
-    name: newPlace.value
+  handleFormSubmit: (item) => {
+        const newItem = {
+    link: item.url,
+    name: item.placename
     }
     const newCard = cardCreation(newItem);
     cardList.addItem(newCard);
@@ -72,13 +70,13 @@ const popupAddCard = new PopupWithForm({
 })
 popupAddCard.setEventListeners();
 
-//создание экземпляра класса для формы редактирования информации о пользователе
+//создание экземпляра класса для формы редактирования информации о пользователе 
 const popupEditCard = new PopupWithForm({
-  popupSelector: '.popup_function_edit', 
-  handleFormSubmit: () => {
-    userInfo.setUserInfo(newName.value, newOccupation.value);
-    popupEditCard.close();
-  }
+popupSelector: '.popup_function_edit',
+handleFormSubmit: (data) => {
+  userInfo.setUserInfo(data.fullname, data.occupation);
+  popupEditCard.close();
+}
 })
 popupEditCard.setEventListeners();
 
