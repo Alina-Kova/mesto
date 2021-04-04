@@ -19,7 +19,9 @@
         <main class="content">
             <section class="profile">
                 <div class="profile__section">
+                    <div class="profile__avatar-section">
                     <img src="<%=require('../src/Images/avatar.jpg')%>" alt="фото профиля" class="profile__avatar">
+                    </div>
                     <div class="profile__info">
                         <div class="profile__container">
                             <h1 id="name" class="profile__name">Жак-Ив Кусто</h1>
@@ -86,18 +88,45 @@
             </div>
         </section>
 
+        <section class="popup popup_function_edit-avatar">
+            <button class="popup__close-button popup__close-button_form_edit-avatar popup__close" type="button"></button>
+            <div class="popup__container">
+                <h2 class="popup__header">Обновить аватар</h2>
+                <form class="popup__input popup__input_function_edit-avatar" name="popupform" novalidate>
+                    <input type="url" name="link" placeholder="Ссылка на картинку"
+                        class="popup__text popup__text_type_avatar-link" id="link-input" required>
+                    <span class="popup__error" id="link-input-error"></span>
+                    <input type="submit" name="createbutton" value="Сохранить"
+                        class="popup__submit popup__submit_function_create">
+                </form>
+            </div>
+        </section>
+
+        <section class="popup popup_function_delete-card">
+            <button class="popup__close-button popup__close-button_form_delete popup__close" type="button"></button>
+			<div class="popup__container">
+				<h2 class="popup__header">Вы уверены?</h2>
+				<form class="popup__input popup__input_function_delete-card" name="popupform">
+                    <input type="submit" name="submitbutton" value="Да"
+                        class="popup__submit popup__submit_function_create">
+				</form>
+			</div>
+		</section> 
+
         <template class="template">
             <li class="elements__card">
                 <button class="elements__delete" type="button"></button>
                 <img src="#" class="elements__photo" alt="#">
                 <div class="elements__caption">
                     <h2 class="elements__card-name"></h2>
+                    <div class="elements__like-section">
                     <button class="elements__like" type="button"></button>
+                    <span class="elements__like-count">0</span>
+                    </div>
                 </div>
             </li>
         </template>
 
     </div>
 </body>
-
 </html>

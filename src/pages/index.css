@@ -9,6 +9,7 @@
 /* profile */
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__section/profile__section.css);
+@import url(../blocks/profile/__avatar-section/profile__avatar-section.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__container/profile__container.css);
@@ -22,10 +23,13 @@
 @import url(../blocks/elements/__list/elements__list.css);
 @import url(../blocks/elements/__card/elements__card.css);
 @import url(../blocks/elements/__delete/elements__delete.css);
+@import url(../blocks/elements/__delete/_visible/elements__delete_visible.css);
 @import url(../blocks/elements/__photo/elements__photo.css);
 @import url(../blocks/elements/__caption/elements__caption.css);
 @import url(../blocks/elements/__card-name/elements__card-name.css);
+@import url(../blocks/elements/__like-section/elements__like-section.css);
 @import url(../blocks/elements/__like/elements__like.css);
+@import url(../blocks/elements/__like-count/elements__like-count.css);
 @import url(../blocks/elements/__like/_active/elements__like_active.css);
 
 /* footer */

@@ -8,7 +8,7 @@ class PopupWithImage extends Popup{
         this._popupCaption =  this._popup.querySelector('.popup__caption');
     }
 
-    //метод, который вставляет ссылку, имя и альт картинки в попап
+//метод, который вставляет ссылку, имя и альт картинки в попап
     open(link, name) {
         this._popupCaption.textContent = name;
         this._popupImage.src = link;

@@ -1,50 +1,26 @@
 class Section {
-    constructor({items, renderer}, containerSelector) {
+    constructor({ items, renderer }, containerSelector) {
         this._renderedItems = items;
         this._renderer = renderer;
         this._container = document.querySelector(containerSelector);
     }
 
-    renderItems() {
+//метод, который отвечает за отрисовку данных на странице
+    renderItems(userData) {
         this._renderedItems.forEach(item => {
-            this._renderer(item);
+            this._renderer(item, userData);
         })
     }
-    
+
+//метод, который принимает DOM-элемент и добавляет его в контейнер
     addItem(element) {
         this._container.prepend(element);
     }
 
-    // prependItem(element) {
-    //     this._container.prepend(element);
-    // }
+//метод, который устанавливает отрисованные элементы
+    setRenderedItems(item) {
+        this._renderedItems = item;
+    }
 };
 
 export default Section;
-
-///////////////
-// export default class Section {
-//     constructor({ data, renderer }, containerSelector) {
-//       this._renderedItems = data;
-//       this._renderer = renderer;
-
-//       this._container = document.querySelector(containerSelector);
-//     }
-
-//     addItem(userData) {
-//       this._renderedItems.forEach(item => 
-//         this._renderer(item, userData));
-//     }
-
-//     setItem(element) {
-//       this._container.append(element);
-//     }
-
-//     setMyItem(element) {
-//       this._container.prepend(element);
-//     }
-
-//     setRenderedItems(data) {
-//       this._renderedItems = data;
-//     }
-//   };

@@ -18,10 +18,9 @@
 
 @media screen and (min-width: 1280px) {
     .popup__close-button {
-        background-image: url(../../../Images/close-icon_2.svg);
+        right: -230px;
         width: 40px;
         height: 40px;
-        right: -230px;
     }
 }
 
