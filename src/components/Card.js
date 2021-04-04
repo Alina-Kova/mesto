@@ -67,6 +67,12 @@ class Card {
 		}
 	}
 
+	//метод удаления карточки
+	_deleteCard() {
+		this._element.remove();
+		this._element = null;
+	}
+
 	// метод добавления слушателя событий
 	_setEventListeners() {
 
@@ -79,7 +85,9 @@ class Card {
 		});
 
 		this._deleteIcon.addEventListener('click', () => {
-			this._handleDeleteCardClick(this._element, this._data._id)
+			this._handleDeleteCardClick(this._data._id, () => {
+				this._deleteCard();
+			})
 		});
 	}
 }
