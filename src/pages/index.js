@@ -81,9 +81,18 @@ const cardCreation = (data, userData) => {
 					})
 			}
 		},
-		handleDeleteCardClick: (cardId, removeCard) => {
-			popupDeleteCard.open(cardId);
-			removeCard();
+		handleDeleteCardClick: (cardId) => {
+			popupDeleteCard.open();
+			popupDeleteCard.submitForm(() => {
+				api.deleteCard(cardId)
+					.then(() => {
+						card.deleteCard();
+						popupDeleteCard.close();
+					})
+					.catch((error) => {
+						console.log(error)
+					})
+			})
 		}
 	});
 	const cardElement = card.generateCard();
@@ -98,7 +107,6 @@ const cardList = new Section({
 		cardList.addItem(newElement);
 	},
 }, '.elements__list')
-console.log(cardList);
 
 //уведомление пользователя о процессе загрузки
 const showLoadingStatus = (popup, saving) => {

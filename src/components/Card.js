@@ -45,7 +45,7 @@ class Card {
 		else return false
 	}
 
-    //метод постановки и снятия лайков с изменением их кол-ва
+	//метод постановки и снятия лайков с изменением их кол-ва
 	setLikesNumber(data) {
 		this._data = data;
 		this._likeElement = this._element.querySelector('.elements__like');
@@ -68,7 +68,7 @@ class Card {
 	}
 
 	//метод удаления карточки
-	_deleteCard() {
+	deleteCard() {
 		this._element.remove();
 		this._element = null;
 	}
@@ -85,10 +85,9 @@ class Card {
 		});
 
 		this._deleteIcon.addEventListener('click', () => {
-			this._handleDeleteCardClick(this._data._id, () => {
-				this._deleteCard();
-			})
+			this._handleDeleteCardClick(this._data._id)
 		});
+
 	}
 }
 
