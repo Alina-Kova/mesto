@@ -16,7 +16,7 @@ class Api {
             method: 'GET',
             headers: this._headers
         })
-            .then(res => this._getResponseData(res));
+        .then(this._getResponseData); 
     }
 
     getInitialCards() {
@@ -24,7 +24,7 @@ class Api {
             method: 'GET',
             headers: this._headers
         })
-        .then(res => this._getResponseData(res));
+        .then(this._getResponseData); 
     }
 
     showUserInfo(data) {
@@ -36,7 +36,7 @@ class Api {
                 about: data.about
             })
         })
-        .then(res => this._getResponseData(res));
+        .then(this._getResponseData); 
     }
 
     addNewCard(data) {
@@ -48,7 +48,7 @@ class Api {
                 name: data.name
             })
         })
-        .then(res => this._getResponseData(res));
+        .then(this._getResponseData); 
     }
 
     showLikesNumber(cardId) {
@@ -56,7 +56,7 @@ class Api {
             method: 'PUT',
             headers: this._headers
         })
-        .then(res => this._getResponseData(res));
+        .then(this._getResponseData); 
     }
 
     deleteCard(cardId) {
@@ -64,7 +64,7 @@ class Api {
             method: 'DELETE',
             headers: this._headers
         })
-        .then(res => this._getResponseData(res));
+        .then(this._getResponseData); 
     }
 
     unlikeCard(cardId) {
@@ -72,7 +72,7 @@ class Api {
             method: 'DELETE',
             headers: this._headers
         })
-        .then(res => this._getResponseData(res));
+        .then(this._getResponseData); 
     }
 
     editAvatar(data) {
@@ -83,7 +83,7 @@ class Api {
                 avatar: data.avatar
             })
         })
-        .then(res => this._getResponseData(res));
+        .then(this._getResponseData); 
     }
 }
 
